@@ -1,0 +1,157 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="timecapsule-dev" name="timecapsule-dev-lab3">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Вне AWS -->
+        <mxCell id="users" value="Пользователи" style="shape=actor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="140" width="40" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc" value="Ваш компьютер" style="shape=actor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="400" width="40" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="github" value="GitHub" style="ellipse;whiteSpace=wrap;html=1;fillColor=#24292e;fontColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="20" y="530" width="70" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- AWS Cloud / Region / VPC -->
+        <mxCell id="aws" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="20" width="900" height="640" as="geometry"/>
+        </mxCell>
+        <mxCell id="region" value="Регион eu-central-1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#147EBA;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="60" width="860" height="580" as="geometry"/>
+        </mxCell>
+        <mxCell id="vpc" value="timecapsule-dev-vpc&lt;br&gt;10.7.0.0/16" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc2;strokeColor=#8C4FFF;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#AAB7B8;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="100" width="620" height="520" as="geometry"/>
+        </mxCell>
+
+        <!-- Route 53 -->
+        <mxCell id="r53" value="Route 53 private zone&lt;br&gt;timecapsule.internal" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#945DF2;gradientDirection=north;fillColor=#5A30B5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;" vertex="1" parent="1">
+          <mxGeometry x="860" y="290" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r53link" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="vpc" target="r53">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Зоны доступности -->
+        <mxCell id="aza" value="eu-central-1a" style="fillColor=none;strokeColor=#147EBA;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#147EBA;html=1;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="150" width="270" height="450" as="geometry"/>
+        </mxCell>
+        <mxCell id="azb" value="eu-central-1b" style="fillColor=none;strokeColor=#147EBA;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#147EBA;html=1;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="150" width="270" height="450" as="geometry"/>
+        </mxCell>
+
+        <!-- Подсети -->
+        <mxCell id="pub-a" value="timecapsule-dev-public-a&lt;br&gt;10.7.0.0/24" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#7AA116;fillColor=#F2F6E8;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="255" y="185" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="pub-b" value="timecapsule-dev-public-b&lt;br&gt;10.7.1.0/24" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#7AA116;fillColor=#F2F6E8;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="185" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="priv-a" value="timecapsule-dev-private-a&lt;br&gt;10.7.10.0/24" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#00A4A6;fillColor=#E6F6F7;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="255" y="400" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="priv-b" value="timecapsule-dev-private-b&lt;br&gt;10.7.11.0/24" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#00A4A6;fillColor=#E6F6F7;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="400" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="reserve" value="резерв" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="480" width="80" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Security Groups -->
+        <mxCell id="websg" value="timecapsule-dev-web-sg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;fontColor=#DD344C;fontSize=10;verticalAlign=top;align=left;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="265" y="225" width="125" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="bastsg" value="timecapsule-dev-bastion-sg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;fontColor=#DD344C;fontSize=10;verticalAlign=top;align=left;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="550" y="225" width="140" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="dbsg" value="timecapsule-dev-db-sg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;fontColor=#DD344C;fontSize=10;verticalAlign=top;align=left;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="270" y="435" width="150" height="145" as="geometry"/>
+        </mxCell>
+
+        <!-- Серверы -->
+        <mxCell id="app" value="timecapsule-dev-app-server&lt;br&gt;Elastic IP" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;aspect=fixed;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+          <mxGeometry x="302" y="250" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="bastion" value="timecapsule-dev-bastion&lt;br&gt;публичный IP" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;aspect=fixed;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+          <mxGeometry x="595" y="250" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="timecapsule-dev-db-server&lt;br&gt;PostgreSQL 16&lt;br&gt;без публичного IP" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;aspect=fixed;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+          <mxGeometry x="320" y="465" width="50" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- IGW и NAT -->
+        <mxCell id="igw" value="timecapsule-dev-igw" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;aspect=fixed;shape=mxgraph.aws4.internet_gateway;" vertex="1" parent="1">
+          <mxGeometry x="168" y="300" width="45" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="nat" value="timecapsule-dev-nat&lt;br&gt;(временно)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;aspect=fixed;shape=mxgraph.aws4.nat_gateway;" vertex="1" parent="1">
+          <mxGeometry x="425" y="250" width="50" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Связи -->
+        <mxCell id="e1" value="HTTP 80" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1" source="users" target="igw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;" edge="1" parent="1" source="igw" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="SSH 22 только с вашего IP" style="endArrow=classic;html=1;dashed=1;fontSize=10;" edge="1" parent="1" source="pc" target="igw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="SSH 22 только с вашего IP" style="endArrow=classic;html=1;dashed=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="igw" target="bastion">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="130"/>
+              <mxPoint x="620" y="130"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="git pull / деплой" style="endArrow=classic;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="github" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="110" y="555"/>
+              <mxPoint x="110" y="323"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="SSH" style="endArrow=classic;html=1;fontSize=10;" edge="1" parent="1" source="bastion" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="SSH" style="endArrow=classic;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="bastion" target="db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="385"/>
+              <mxPoint x="345" y="385"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="5432" style="endArrow=classic;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="app" target="db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="400"/>
+              <mxPoint x="330" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="dnf" style="endArrow=classic;html=1;dashed=1;fontSize=10;" edge="1" parent="1" source="db" target="nat">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="nat" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="360"/>
+              <mxPoint x="190" y="360"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Легенда -->
+        <mxCell id="legend" value="пунктир: административный доступ и временный NAT Gateway" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="660" width="400" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

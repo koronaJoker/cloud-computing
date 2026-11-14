@@ -432,7 +432,13 @@ UPLOAD_DIR=storage/uploads
 
 ## Задание 13. Деплой и обслуживание
 
+![alt text](images/image-66.png)
+
+![alt text](images/image-67.png)
+
 ## Задание 14. Архитектура и решение
+
+![alt text](images/image-65.png)
 
 # Контрольные вопросы
 
